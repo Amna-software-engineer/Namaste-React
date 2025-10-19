@@ -52,3 +52,10 @@ Whenever something changes, it reacts by updating only that specific thing.
 
 ### Crossorigin Attribute
 The `crossorigin` attribute is the key that unlocks detailed error messages for CDN-loaded scripts.
+
+### What is diference between React and ReactDOM
+React is for creating and managing your UI components, while ReactDOM is the "glue" that takes those components and actually renders them into the HTML DOM for web applications.
+
+###  What is difference between react.development.js and react.production.js files via CDN?
+ react.development.js is optimized(larget,slow) for a developer's workflow, while react.production.min.js is optimized(small(no coments,whitespaces),fast) for the end-user's experience
+
