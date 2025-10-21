@@ -1,3 +1,4 @@
+To preview Ctrl + Shift + V
 
 # Episode 2
 

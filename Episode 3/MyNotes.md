@@ -1,88 +1,72 @@
+To preview Ctrl + Shift + V
 
-# Episode 2
 
-## 🧩 What is NPM?
-NPM is a package registry and a package manager for JavaScript.  
-It stores and distributes packages (modules) that projects can depend on.  
-It is not literally "Node Package Manager" — it's the standard repository and tooling for packages.
+# Episode 3 Notes
 
----
+## Parcel & NPM Commands
 
-## 📄 package.json
-`package.json` is the configuration file for your project and npm.  
-It records project metadata and the exact packages (dependencies) your project uses.
+- `npx parcel index.html`  
+  npx means we are executing an npm package `parcel` and giving it the source file `index.html`.
 
-- Keep `package.json` and `package-lock.json` in version control.
-- Do not commit `node_modules/`.
-
-`package-lock.json` records exact installed versions (including transitive dependencies), so installs are deterministic.
----
-
-## 🧱 Bundler
-A bundler (like Webpack, Parcel, or Vite) combines your modules into optimized bundles for production.  
-Bundlers handle tasks like minification, code-splitting, and asset optimization.
+- `npm run start` or `npm start`  
+  Behind the scenes it runs the command written in the `scripts` section with the key `"start"` (for example, `"start": "parcel index.html"`).
 
 ---
 
-## ⚡ Advantages of Parcel
-- Fast dev builds
-- Local dev server with HMR (Hot Module Replacement)
-- File watching implemented in C++ for speed
-- Caching for faster rebuilds
-- Image optimization
-- Minification and compression
-- Consistent hashing & cache-busting
-- Code splitting
-- Differential bundling (support for older browsers)
-- Friendly error messages
-- HTTPS support in dev server
-- Tree shaking (removes unused code)
-- Separate dev and production bundles
+## React Elements vs DOM Elements
+
+- Just like we have DOM elements, we also have React elements which are kind of equivalent to DOM elements.  
+- React elements are JavaScript objects that describe what should appear on the screen.  
+- DOM elements are actual HTML elements rendered in the browser.  
+- Example:  
+  ```js
+  React.createElement("h1", {}, "hello");
+  ```
 
 ---
 
-## ⚙️ Types of dependencies
-1. devDependencies — required only for development (build tools, linters, test runners).  
-2. dependencies — required at runtime (used in production).
+## JSX and Transpilation
 
-Install examples:
-```bash
-# Install Parcel as a devDependency
-npm install -D parcel
+- JSX is not part of React but is a language extension; we can write React code without JSX (not mandatory).  
+- JSX is not HTML inside JavaScript; it is an HTML-like syntax.  
+- Browsers do not understand JSX. Parcel (via Babel) converts JSX to `React.createElement` calls.  
+- Transpilation flow:  
+  JSX => `React.createElement` => ReactElement (JS object) => HTMLElement (render)
 
-# Install runtime dependencies
-npm install react react-dom
-```
-
-Use npx to run a package without installing it globally:
-```bash
-npx parcel index.html
-```
+- The JS engine understands ECMAScript (ES) standards such as ES6.
 
 ---
 
-## 🔢 Version ranges in package.json
-- ^1.2.3 (caret) — allows non-breaking minor/patch upgrades (e.g., 1.2.3 → 1.3.0 or 1.2.4, but not 2.0.0).
-- ~1.2.3 (tilde) — allows patch upgrades (e.g., 1.2.3 → 1.2.4) but not minor (1.3.0).
+## How createElement Works
 
-
-
----
-
-## 🔁 Transitive dependencies
-Packages depend on other packages, which depend on others. These are transitive dependencies and are recorded in `package-lock.json` and installed into `node_modules/`.
+- `React.createElement` creates a React element, which is an object containing details of which HTML element to create.  
+- ReactDOM converts this React element (object) to an HTMLElement and replaces the root element where React is attached.
 
 ---
 
-## ☁️ CDN vs local packages
-Using a CDN for libraries can be convenient, but relying on local packages (via npm) gives you better control and reproducibility. Changing a library version with a CDN means updating the CDN link.
+## JSX Syntax Details
+
+- In JSX, attributes are written in camelCase (e.g., `className`).  
+- To write JSX across multiple lines, wrap it in parentheses `()`.
 
 ---
 
-## 🧩 Modules in the browser
-To use ES modules in the browser, add type="module" to your script:
-```html
-<script type="module" src="./index.js"></script>
-```
+## React Components
+
+- Two types:  
+  - Class-based components: old way — uses classes.  
+  - Functional components: new way — uses functions, must be named with a capital letter, and return JSX.  
+- A functional component is a function that returns some JSX code / a React element.  
+- Component composition: composing one component inside another.
 
 ---
+
+## JSX and Security
+
+- `{}` is used to write JS expressions inside JSX.  
+- Cross-site scripting (XSS): JS inside `{}` will be executed. If data from an API contains malicious code, an attacker could exploit it. JSX/React provides protections and does not run HTML/JS blindly.
+
+---
+
+JSX makes code more readable.
+
