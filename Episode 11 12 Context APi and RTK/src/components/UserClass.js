@@ -7,17 +7,17 @@ class UserClass extends React.Component {
             count: 1,
             count2: 2
         }
-        console.log(this.props.name+" constructor");
+        // console.log(this.props.name+" constructor");
         
     }
     componentDidMount(){
-        console.log(this.props.name+" componentDidMount");
+        // console.log(this.props.name+" componentDidMount");
     }
 
     render() {
         const { name, city } = this.props;
         const { count } = this.state;
-        console.log(this.props.name+" Render");
+        // console.log(this.props.name+" Render");
         
 
         return (

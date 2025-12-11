@@ -6,7 +6,8 @@ import About from "./components/About.js"
 import Contact from "./components/Contact.js"
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router"
 import UserContext from "../utils/UserContext.js";
-
+import store from "../utils/store.js";
+import {Provider} from "react-redux"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -15,10 +16,13 @@ const App = () => {
 
   const [theme,setTheme] = useState("light");
   return <UserContext.Provider value={{ theme,setTheme }}>
+    <Provider store={store}>
+
     <div>
       <Header />
       <Outlet />
     </div>
+    </Provider>
   </UserContext.Provider>
 }
 

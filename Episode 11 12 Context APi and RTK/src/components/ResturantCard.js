@@ -1,11 +1,15 @@
+import { useDispatch } from "react-redux";
+import { addItems } from "../../utils/cartSlice";
 
 
 // resturant card
 const ResturantCard = (props) => {
-    console.log(props && props);
+    // console.log(props && props);
     const { name, cuisine, deliveryTime, costForTwo, imageURL } = props?.resdata;
-   
-   
+   const dispatch= useDispatch()
+   const hanldeCart=(item)=>{
+    dispatch(addItems(item))
+   }
     return (
 
         <div className="rescard">
@@ -15,7 +19,7 @@ const ResturantCard = (props) => {
             {/*cuisine: a style or method of cooking */}
             <p>Pakistani</p>
             <p>20-30 min, Rs.200 </p>
-          
+          <button onClick={()=> hanldeCart(props?.resdata)}>Add to cart</button>
         </div>
     )
 }
